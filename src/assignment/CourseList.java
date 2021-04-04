@@ -9,12 +9,11 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- *
  * @author Dell
  */
 public class CourseList {
 
-    public static void addCourse(ArrayList<Course> t) {
+    public static void addCourse(ArrayList<Course> courses) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter course ID: ");
         String ID = scanner.nextLine();
@@ -22,57 +21,56 @@ public class CourseList {
         String name = scanner.nextLine();
         System.out.println("Enter credit: ");
         int credit = scanner.nextInt();
-        t.add(new Course(ID, name, credit));
+        courses.add(new Course(ID, name, credit));
 
     }
 
-    public static Course getCourseByID(ArrayList<Course> t, String id) {
-        for (Course course : t) {
+    private static Course getCourseByID(ArrayList<Course> courses, String id) {
+        for (Course course : courses) {
             if (id.equalsIgnoreCase(course.getID())) {
-                course.display();
+                return course;
             }
         }
         return null;
- 
     }
 
-    public static void search(ArrayList<Course> t) {
+    public static void search(ArrayList<Course> courses) {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("search course by ID:");
         String id = scanner.nextLine();
-        CourseList.getCourseByID(t, id);
+        Course course = getCourseByID(courses, id);
+        course.display();
+    }
 
-    }
-    public static void listall(ArrayList<Course> t){
-        System.out.println("CourseID"+"\t"+"CourseName"+"\t"+"Credit");
-        for (Course course : t) {
-            printcourse(course);
+    public static void listAll(ArrayList<Course> courses) {
+        System.out.println("CourseID" + "\t" + "CourseName" + "\t" + "Credit");
+        for (Course course : courses) {
+            course.display();
         }
     }
-    public static void printcourse(Course course){
-        System.out.println(course.getID()+ "\t\t" +course.getName()+"\t\t" +course.getCredit());
-    }
-    public static void sort(ArrayList<Course> t){
-        for (Course course : t) {
-            printcourse(course);
+
+    public static void sort(ArrayList<Course> courses) {
+        for (Course course : courses) {
+            course.display();
         }
     }
-    public static void update(ArrayList<Course> t){
+
+    public static void update(ArrayList<Course> courses) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter course ID: ");
         String id = scanner.nextLine();
-        Course o = getCourseByID(t, id);
+        Course o = getCourseByID(courses, id);
         System.out.println("update course ID");
-        String updateid = scanner.nextLine();
+        String updateId = scanner.nextLine();
         System.out.println("update course name: ");
-        String updatename = scanner.nextLine();
+        String updateName = scanner.nextLine();
         System.out.println("update course credit: ");
-        int updatecredit = scanner.nextInt();
-        o.setID(updateid);
-        o.setName(updatename);
-        o.setCredit(updatecredit);
-        System.out.println("Update succesfully");
+        int updateCredit = scanner.nextInt();
+        o.setID(updateId);
+        o.setName(updateName);
+        o.setCredit(updateCredit);
+        System.out.println("Update successfully");
     }
 
 }

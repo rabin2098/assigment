@@ -17,8 +17,8 @@ public class main {
     public static void main(String[] args) {
 
         ArrayList<Course> t = new ArrayList<Course>();
-        t.add(new Course("PRO192", "Object-Oriented Programming", 3));
-        t.add(new Course("PRF192", "Programming Fundamentals", 5));
+        t.add(new Course("PRO192", "Object-Oriented Programming", 5));
+        t.add(new Course("PRF192", "Programming Fundamentals", 3));
         int  choice;
         Scanner h = new Scanner(System.in);
         while (true) {
@@ -36,7 +36,7 @@ public class main {
             switch (choice) {
 
                 case 1:
-                    CourseList.listall(t);
+                    CourseList.listAll(t);
                     break;
                 case 2:
                     CourseList.search(t);
